@@ -3,11 +3,7 @@ A docker container for pycsw
 
 # Installation
 ```
-docker run -it -d \n
-     -p 8012:8000 \n
-     -v /var/data/pycsw:/var/data/pycsw  \n
-     -v /var/log/pycsw:/var/log/pycsw \n
-     minhd/docker-pycsw
+docker run -it -d -p 8012:8000 -v /var/data/pycsw:/var/data/pycsw -v /var/log/pycsw:/var/log/pycsw --name pycsw minhd/docker-pycsw
 ```
 
 # Development
