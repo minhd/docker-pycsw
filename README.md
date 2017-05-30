@@ -2,8 +2,24 @@
 A docker container for pycsw
 
 # Installation
+
+Quick start
 ```
-docker run -it -d -p 8012:8000 -v /var/data/pycsw:/var/data/pycsw -v /var/log/pycsw:/var/log/pycsw --name pycsw minhd/docker-pycsw
+docker run -it -d \
+    -p 8000:8000 \
+    --name pycsw \
+    minhd/docker-pycsw
+```
+
+Production use case. Configuration, data (sqlite3) and log are persistent
+```
+docker run -it -d \
+    -p 8000:8000 \
+    -v /my/pycsw/default.cfg:/opt/pycsw/default.cfg \
+    -v /my/pycsw/data:/var/data/pycsw \
+    -v /my/pycsw/log:/var/log/pycsw \
+    --name pycsw \
+    minhd/docker-pycsw
 ```
 
 # Development
