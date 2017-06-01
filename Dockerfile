@@ -16,8 +16,7 @@ RUN apk update
 RUN apk add --no-cache "libxml2-dev==2.9.1-r5" libxslt-dev
 
 # pycsw custom source code checkout
-RUN git clone https://github.com/minhd/pycsw.git
-RUN git checkout develop
+RUN git clone --branch develop https://github.com/minhd/pycsw.git
 
 # install pycsw
 WORKDIR /opt/pycsw
