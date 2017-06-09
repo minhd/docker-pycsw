@@ -15,8 +15,16 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.0/main' >> /etc/apk/repositori
 RUN apk update
 RUN apk add --no-cache "libxml2-dev==2.9.1-r5" libxslt-dev
 
+# Install PGSQL support
+RUN apk add postgresql-dev
+RUN pip install psycopg2
+
 # pycsw custom source code checkout
 RUN git clone --branch develop https://github.com/minhd/pycsw.git
+
+# specific 2.0.2 
+WORKDIR /opt/pycsw
+RUN git checkout tags/2.0.2
 
 # install pycsw
 WORKDIR /opt/pycsw
@@ -33,3 +41,4 @@ RUN pycsw-admin.py -c setup_db -f default.cfg
 
 EXPOSE 8000
 CMD ["python", "/opt/pycsw/pycsw/wsgi.py"]
+
