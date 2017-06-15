@@ -22,10 +22,6 @@ RUN pip install psycopg2
 # pycsw custom source code checkout
 RUN git clone --branch develop https://github.com/minhd/pycsw.git
 
-# specific 2.0.2 
-WORKDIR /opt/pycsw
-RUN git checkout tags/2.0.2
-
 # install pycsw
 WORKDIR /opt/pycsw
 RUN pip install -e .
